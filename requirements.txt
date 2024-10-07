@@ -113,6 +113,8 @@ sqlalchemy==2.0.31
     # via -r requirements.in
 streamlit==1.36.0
     # via -r requirements.in
+streamlit-msal==0.2.0
+    # via -r requirements.in
 tenacity==8.5.0
     # via streamlit
 toml==0.10.2
