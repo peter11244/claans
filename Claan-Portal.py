@@ -38,7 +38,7 @@ def init_page() -> None:
             if path_img_logo.exists():
                 st.image(str(path_img_logo))
         with col_header:
-            st.header("Advancing Analytics")
+            st.header("Advancing Analytics (PETER TEST)")
             st.subheader("Season 4 - Claan Calm")
 
         st.header("Welcome")
