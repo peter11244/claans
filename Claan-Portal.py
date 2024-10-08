@@ -10,10 +10,15 @@ from src.utils.database import Database
 
 def init_page() -> None:
     st.set_page_config(page_title="Claan ChAAos", page_icon=":dragon:")
-    st.navigation([
-        st.Page("Claan-Portal.py"),
-        st.Page("page/1_Earth_Striders.py")
-    ],
+    
+    available_pages = [st.Page("Claan-Portal.py")]
+    if auth_data:
+        # IF CLAAN
+        available_pages.extend(["Thunder_Walkers.py"])
+        # IF ADMIN
+        available_pages.extend(["page/Admin.py"])
+
+    st.navigation(pages=available_pages,
     position="sidebar"
     )
 
