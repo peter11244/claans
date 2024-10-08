@@ -159,7 +159,7 @@ def init_page() -> None:
 
     else:
         st.navigation(pages=available_pages, position="hidden")
-        st.write("Authenticate to access protected content")
+        st.write("Welcome to CLAANS! Please Log In.")
         st.stop()
 
 def main() -> None:
