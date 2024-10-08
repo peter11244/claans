@@ -14,6 +14,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(nullable=False)
+    email: Mapped[str] = mapped_column(nullable=False)
     claan: Mapped[Claan] = mapped_column(nullable=False, index=True)
     active: Mapped[bool] = mapped_column(nullable=False, default=True)
 
@@ -21,13 +22,14 @@ class User(Base):
         back_populates="user", cascade="all, delete", passive_deletes=True
     )
 
-    def __init__(self, name: str, claan: Claan, active: Optional[bool] = True):
+    def __init__(self, name: str, email: str, claan: Claan, active: Optional[bool] = True):
         self.name = name
         self.claan = claan
+        self.email = email
         self.active = active
 
     def __repr__(self):
         return f"User({vars(self)})"
 
     def __str__(self):
-        return f"User '{self.name}' in Claan '{self.claan.value}'"
+        return f"User '{self.name}({self.email})' in Claan '{self.claan.value}'"

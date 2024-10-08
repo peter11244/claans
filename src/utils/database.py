@@ -80,7 +80,7 @@ def initialise() -> None:
                 count = session.scalar(query)
 
                 if count < 1:
-                    this_user = User(name=fake.name(), claan=claan)
+                    this_user = User(name=fake.name(),email=fake.email(), claan=claan)
                     session.add(this_user)
 
         # If no quests, populate with test quests for each die
