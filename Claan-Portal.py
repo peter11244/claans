@@ -11,8 +11,11 @@ from src.utils.database import Database
 def init_page() -> None:
     st.set_page_config(page_title="Claan ChAAos", page_icon=":dragon:")
     st.navigation([
+        st.Page("Claan-Portal.py"),
         st.Page("page/1_Earth_Striders.py")
-    ])
+    ],
+    position="sidebar"
+    )
 
     st.markdown(
         """<style>
