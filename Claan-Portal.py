@@ -84,7 +84,7 @@ def init_page() -> None:
             #st.write("Protected content available")
 
 
-        st.header("Welcome")
+        st.header(f"Welcome {name.split(" ")[0]}")
         st.write(
             "Welcome to season 4 of Claans at Advancing Analytics. This time around things are taking a more relaxed turn, but we're retaining a healthy dose of that Claans flair!"
         )
