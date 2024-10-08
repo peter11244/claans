@@ -2,6 +2,7 @@ import pathlib
 
 import pandas as pd
 import streamlit as st
+from streamlit_msal import Msal
 
 from src.models.claan import Claan
 from src.models.task import TaskType
@@ -87,6 +88,45 @@ class ClaanPage:
             return True
 
     def build_page(self):
+
+        auth_data = Msal.initialize_ui(
+            client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
+            authority="https://login.microsoftonline.com/6d2c78dd-1f85-4ccb-9ae3-cd5ea1cca361",
+            scopes=[], # Optional
+            # Customize (Default values):
+            connecting_label="Connecting",
+            disconnected_label="Disconnected",
+            sign_in_label="Sign in",
+            sign_out_label="Sign out"
+        )
+
+        if not auth_data:
+            st.write("Authenticate to access protected content")
+            st.stop()
+
+        if auth_data:
+            # Getting useful information
+            access_token = auth_data["accessToken"]
+
+            account = auth_data["account"]
+            name = account["name"]
+            username = account["username"]
+            account_id = account["localAccountId"]
+
+
+            # Display information
+            st.write(f"Hello {name}!")
+            st.write(f"Your username is: {username}")
+            st.write(f"Your account id is: {account_id}")
+            st.write("Your access token is:")
+            st.code(access_token)
+
+            st.write("Auth data:")
+            st.json(auth_data)
+
+
+            st.write("Protected content available")
+
         if not self.check_password():
             return
 
