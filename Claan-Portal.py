@@ -71,17 +71,17 @@ def init_page() -> None:
 
 
             # Display information
-            st.write(f"Hello {name}!")
-            st.write(f"Your username is: {username}")
-            st.write(f"Your account id is: {account_id}")
-            st.write("Your access token is:")
-            st.code(access_token)
+            #st.write(f"Hello {name}!")
+            #st.write(f"Your username is: {username}")
+            #st.write(f"Your account id is: {account_id}")
+            #st.write("Your access token is:")
+            #st.code(access_token)
 
-            st.write("Auth data:")
-            st.json(auth_data)
+            #st.write("Auth data:")
+            #st.json(auth_data)
 
 
-        st.write("Protected content available")
+            #st.write("Protected content available")
 
 
         st.header("Welcome")
