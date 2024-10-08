@@ -69,21 +69,6 @@ def init_page() -> None:
             username = account["username"]
             account_id = account["localAccountId"]
 
-
-            # Display information
-            #st.write(f"Hello {name}!")
-            #st.write(f"Your username is: {username}")
-            #st.write(f"Your account id is: {account_id}")
-            #st.write("Your access token is:")
-            #st.code(access_token)
-
-            #st.write("Auth data:")
-            #st.json(auth_data)
-
-
-            #st.write("Protected content available")
-
-
         st.header(f"Welcome {name.split(" ")[0]}")
         st.write(
             "Welcome to season 4 of Claans at Advancing Analytics. This time around things are taking a more relaxed turn, but we're retaining a healthy dose of that Claans flair!"
