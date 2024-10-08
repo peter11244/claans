@@ -39,8 +39,10 @@ def init_page() -> None:
         # IF ADMIN
         available_pages.append("./pages/Admin.py")
 
-        st.navigation(pages=available_pages,
-        position="sidebar"
+        st.navigation(
+            pages=available_pages,
+            position="sidebar",
+            expanded=True,
         )
 
 
