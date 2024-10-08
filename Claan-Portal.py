@@ -158,7 +158,7 @@ def init_page() -> None:
         # --- INFO --- #
 
     else:
-        st.navigation(pages=None, position="hidden")
+        st.navigation(pages=available_pages, position="hidden")
         st.write("Authenticate to access protected content")
         st.stop()
 
