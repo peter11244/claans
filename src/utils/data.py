@@ -391,7 +391,7 @@ def get_claan_users(_session: Session, claan: Claan) -> List[User]:
 
 @timer
 def add_user(_session: Session) -> User:
-    if st.session_state.keys() < {"add_user_name", "add_user_claan"}:
+    if st.session_state.keys() < {"add_user_name", "add_user_claan", "add_user_email"}:
         LOGGER.error("`add_user` called but required keys not in session state")
         st.warning("Unable to add user, missing keys in session state.")
         return
@@ -399,6 +399,7 @@ def add_user(_session: Session) -> User:
     user = User(
         name=st.session_state["add_user_name"],
         claan=st.session_state["add_user_claan"],
+        email=st.session_state["add_user_email"],
     )
 
     _session.add(user)

@@ -107,6 +107,7 @@ def user_management() -> None:
             with st.form(key="add_user", clear_on_submit=True, border=True):
                 st.subheader("Add User")
                 st.text_input(label="Name", key="add_user_name", placeholder="John Doe")
+                st.text_input(label="Email", key="add_user_email", placeholder="John.Doe@advancinganalytics.co.uk")
                 st.selectbox(
                     label="Claan",
                     key="add_user_claan",
