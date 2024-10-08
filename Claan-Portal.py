@@ -35,9 +35,9 @@ def init_page() -> None:
         account_id = account["localAccountId"]
 
         # IF CLAAN
-        available_pages.extend(["Thunder_Walkers.py"])
+        available_pages.extend(["pages/Thunder_Walkers.py"])
         # IF ADMIN
-        available_pages.extend(["page/Admin.py"])
+        available_pages.extend(["pages/Admin.py"])
 
         st.navigation(pages=available_pages,
         position="sidebar"
@@ -158,7 +158,7 @@ def init_page() -> None:
         # --- INFO --- #
 
     else:
-        st.navigation(position="hidden")
+        st.navigation(pages=[], position="hidden")
         st.write("Authenticate to access protected content")
         st.stop()
 
