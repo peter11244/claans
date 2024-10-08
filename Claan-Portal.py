@@ -22,10 +22,6 @@ def init_page() -> None:
             sign_out_label="Sign out"
         )
 
-    if not auth_data:
-        st.write("Authenticate to access protected content")
-        st.stop()
-
     if auth_data:
         # Getting useful information
         access_token = auth_data["accessToken"]
@@ -34,16 +30,6 @@ def init_page() -> None:
         name = account["name"]
         username = account["username"]
         account_id = account["localAccountId"]
-
-
-
-
-
-
-
-
-
-
 
     available_pages = [st.Page("Claan-Portal.py")]
     if auth_data:
@@ -57,7 +43,10 @@ def init_page() -> None:
         )
 
     else:
-        st.navigation(pages=None, position="hidden")
+        st.navigation(position="hidden")
+        st.write("Authenticate to access protected content")
+        st.stop()
+
 
 
     st.markdown(
