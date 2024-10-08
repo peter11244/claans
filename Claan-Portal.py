@@ -11,6 +11,40 @@ from src.utils.database import Database
 def init_page() -> None:
     st.set_page_config(page_title="Claan ChAAos", page_icon=":dragon:")
     
+    auth_data = Msal.initialize_ui(
+            client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
+            authority="https://login.microsoftonline.com/6d2c78dd-1f85-4ccb-9ae3-cd5ea1cca361",
+            scopes=[], # Optional
+            # Customize (Default values):
+            connecting_label="Connecting",
+            disconnected_label="Disconnected",
+            sign_in_label="Sign in",
+            sign_out_label="Sign out"
+        )
+
+    if not auth_data:
+        st.write("Authenticate to access protected content")
+        st.stop()
+
+    if auth_data:
+        # Getting useful information
+        access_token = auth_data["accessToken"]
+
+        account = auth_data["account"]
+        name = account["name"]
+        username = account["username"]
+        account_id = account["localAccountId"]
+
+
+
+
+
+
+
+
+
+
+
     available_pages = [st.Page("Claan-Portal.py")]
     if auth_data:
         # IF CLAAN
@@ -18,9 +52,13 @@ def init_page() -> None:
         # IF ADMIN
         available_pages.extend(["page/Admin.py"])
 
-    st.navigation(pages=available_pages,
-    position="sidebar"
-    )
+        st.navigation(pages=available_pages,
+        position="sidebar"
+        )
+
+    else:
+        st.navigation(pages=None, position="hidden")
+
 
     st.markdown(
         """<style>
@@ -56,29 +94,7 @@ def init_page() -> None:
             st.header("Advancing Analytics (PETER TEST)")
             st.subheader("Season 4 - Claan Calm")
 
-        auth_data = Msal.initialize_ui(
-            client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
-            authority="https://login.microsoftonline.com/6d2c78dd-1f85-4ccb-9ae3-cd5ea1cca361",
-            scopes=[], # Optional
-            # Customize (Default values):
-            connecting_label="Connecting",
-            disconnected_label="Disconnected",
-            sign_in_label="Sign in",
-            sign_out_label="Sign out"
-        )
-
-        if not auth_data:
-            st.write("Authenticate to access protected content")
-            st.stop()
-
-        if auth_data:
-            # Getting useful information
-            access_token = auth_data["accessToken"]
-
-            account = auth_data["account"]
-            name = account["name"]
-            username = account["username"]
-            account_id = account["localAccountId"]
+        
 
         st.header(f"Welcome {name.split(" ")[0]}")
         st.write(
