@@ -17,6 +17,24 @@ st.markdown(
             unsafe_allow_html=True,
     )
 
+auth_data = Msal.initialize_ui(
+    client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
+    authority="https://login.microsoftonline.com/6d2c78dd-1f85-4ccb-9ae3-cd5ea1cca361",
+    scopes=[], # Optional
+    # Customize (Default values):
+    connecting_label="Connecting",
+    disconnected_label="Disconnected",
+    sign_in_label="Sign in",
+    sign_out_label="Sign out"
+)
+
+access_token = auth_data["accessToken"]
+
+account = auth_data["account"]
+name = account["name"]
+username = account["username"]
+account_id = account["localAccountId"]
+
 with Database.get_session() as session:
     if "scores" not in st.session_state:
         st.session_state["scores"] = data.get_scores(_session=session)
