@@ -23,12 +23,6 @@ def init_page() -> None:
         )
 
     available_pages = [st.Page("Claan-Portal.py")]
-    st.navigation(
-            pages=available_pages,
-            position="sidebar",
-            expanded=True,
-        )
-
     if auth_data:
 
 
@@ -46,9 +40,8 @@ def init_page() -> None:
         available_pages.append("./pages/Admin.py")
 
         st.navigation(
-            pages=[],
+            pages=available_pages,
             position="sidebar",
-            expanded=True,
         )
 
 
