@@ -35,9 +35,9 @@ def init_page() -> None:
         account_id = account["localAccountId"]
 
         # IF CLAAN
-        available_pages.append("./pages/Thunder_Walkers.py")
+        available_pages.append(st.Page("./pages/Thunder_Walkers.py"))
         # IF ADMIN
-        available_pages.append("./pages/Admin.py")
+        available_pages.append(st.Page("./pages/Admin.py"))
 
         pg = st.navigation(
             pages=available_pages,
