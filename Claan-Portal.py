@@ -40,7 +40,7 @@ def init_page() -> None:
         available_pages.append("./pages/Admin.py")
 
         st.navigation(
-            pages=available_pages,
+            pages=[],
             position="sidebar",
             expanded=True,
         )
