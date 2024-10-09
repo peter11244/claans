@@ -17,7 +17,7 @@ st.markdown(
             unsafe_allow_html=True,
     )
 
-auth_data = Msal.initialize_ui(
+auth_data = Msal.initialize(
     client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
     authority="https://login.microsoftonline.com/6d2c78dd-1f85-4ccb-9ae3-cd5ea1cca361",
     scopes=[], # Optional
@@ -27,6 +27,7 @@ auth_data = Msal.initialize_ui(
     sign_in_label="Sign in",
     sign_out_label="Sign out"
 )
+
 
 access_token = auth_data["accessToken"]
 
