@@ -10,7 +10,9 @@ from src.utils.logger import LOGGER
 
 from streamlit_msal import Msal
 
-def init_page() -> None:
+
+def login_page() -> None:
+    st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
     auth_data = Msal.initialize_ui(
         client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
@@ -23,7 +25,26 @@ def init_page() -> None:
         sign_out_label="Sign out"
     )
 
-    st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
+    if not auth_data:
+        st.write("Authenticate to access protected content")
+        st.stop()
+
+    account = auth_data["account"]
+
+    name = account["name"]
+
+    st.write(f"Hello {name}!")
+    st.write("Protected content available")
+
+    return auth_data
+
+
+def init_page() -> None:
+
+
+    auth_data = login_page()
+
+    
 
     st.markdown(
         """<style>
