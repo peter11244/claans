@@ -32,7 +32,7 @@ class ClaanPage:
         )
         
         menu_with_redirect()
-        if not st.session_state["current_user"].claan == self.claan:
+        if not st.session_state["current_user"].claan.value == self.claan.value:
             st.stop()
 
 
