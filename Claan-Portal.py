@@ -54,7 +54,7 @@ def init_page() -> None:
 
     st.write(f"Hello {st.session_state["current_user"].name}!")
     st.write(f"Your Email: {st.session_state["current_user"].email}")
-    st.write(f"Your Claan: {st.session_state["current_user"].claan.name}")
+    st.write(f"Your Claan: {st.session_state["current_user"].claan.value}")
     
 
     ###
@@ -66,7 +66,7 @@ def init_page() -> None:
     available_pages = [st.Page("Claan-Portal.py")]
     
     #Hacky
-    match st.session_state["current_user"].claan.name:
+    match st.session_state["current_user"].claan.value:
         case "Thunder Walkers":
             available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
         case "Iron Stalkers":
