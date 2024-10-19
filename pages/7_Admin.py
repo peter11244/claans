@@ -16,6 +16,9 @@ from src.utils.data.users import (
 from src.utils.database import Database, initialise
 
 
+from menu import menu_with_redirect
+
+
 def load_data():
     with Database.get_session() as session:
         st.session_state["tasks"] = get_tasks(_session=session)
@@ -317,4 +320,5 @@ def init_page() -> None:
 
 
 if __name__ == "__main__":
+    menu_with_redirect()
     init_page()
