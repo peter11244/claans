@@ -12,8 +12,8 @@ from src.utils.logger import LOGGER
 from streamlit_msal import Msal
 
 
-def login_page() -> None:
-    st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
+def login() -> None:
+    
 
     auth_data = Msal.initialize_ui(
         client_id="866dd59e-3ab4-41af-91fe-510d7ad9113e",
@@ -30,26 +30,25 @@ def login_page() -> None:
         st.write("Welcome to Claans! Please sign in to continue.")
         st.stop()
 
+    else:
+        # name = auth_data["account"]["name"]
+        email = auth_data["account"]["username"]
+        with Database.get_session() as session:
+            if "current_user" not in st.session_state:
+                # TODO: Ensure single user?
+                st.session_state["current_user"] = get_current_user(session, email)[0]
+
     return auth_data
 
 
 def init_page() -> None:
+    st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
+    auth_data = login() 
 
-    auth_data = login_page()
-    account = auth_data["account"]
-    name = account["name"]
-    email = account["username"]
-
-    with Database.get_session() as session:
-        if "current_user" not in st.session_state:
-            st.session_state["current_user"] = get_current_user(session, email)
-        
-        claan = st.session_state["current_user"][0].claan
-
-    st.write(f"Hello {name}!")
-    st.write(f"Your Email: {email}")
-    st.write(f"Your Claan: {claan}")
+    st.write(f"Hello {st.session_state["current_user"]["name"]}!")
+    st.write(f"Your Email: {st.session_state["current_user"]["email"]}")
+    st.write(f"Your Claan: {st.session_state["current_user"]["claan"]}")
     
 
     st.markdown(
