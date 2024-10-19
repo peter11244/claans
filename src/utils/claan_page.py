@@ -32,6 +32,9 @@ class ClaanPage:
         )
         
         menu_with_redirect()
+        if not st.session_state["current_user"].claan == self.claan:
+            st.stop()
+
 
         st.markdown(
             """<style>

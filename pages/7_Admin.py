@@ -300,7 +300,7 @@ def init_page() -> None:
 
     menu_with_redirect()
 
-    if not check_password():
+    if not st.session_state["current_user"].email == 'peter.sach@advancinganalytics.co.uk':
         st.stop()
 
     load_data()
