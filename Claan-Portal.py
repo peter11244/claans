@@ -72,7 +72,7 @@ def init_page() -> None:
         case "Claan.IRON_STALKERS":
             available_pages.append(st.Page("./pages/6_Iron_Stalkers.py"))
 
-    if st.session_state["current_user"].email == "jake.ratcliffe@advancinganalytics.co.uk":
+    if st.session_state["current_user"].email == "peter.sach@advancinganalytics.co.uk":
         available_pages.append(st.Page("./pages/7_Admin.py"))
 
     st.navigation(pages=available_pages, position="sidebar")
