@@ -12,7 +12,7 @@ from src.utils.logger import LOGGER
 def get_current_user(_session: Session, email: str) -> User:
 
     query = select(User).where(User.email == email)
-    result = _session.execute(query).scalars().all()
+    result = _session.execute(query).scalar_one()
 
     return result
 

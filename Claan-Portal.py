@@ -25,7 +25,7 @@ else:
     with Database.get_session() as session:
         if "current_user" not in st.session_state:
             # TODO: Ensure single user?
-            st.session_state["current_user"] = get_current_user(session, email)[0]
+            st.session_state["current_user"] = get_current_user(session, email)
 
 
 
