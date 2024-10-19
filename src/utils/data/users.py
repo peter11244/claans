@@ -8,6 +8,13 @@ from src.models.claan import Claan
 from src.models.user import User
 from src.utils.logger import LOGGER
 
+@st.cache_data()
+def get_current_user(_session: Session, email: str) -> User:
+
+    query = select(User).where(User.email == email)
+    result = _session.execute(query).scalars().all()
+
+    return result
 
 @st.cache_data()
 def get_users(_session: Session) -> List[User]:

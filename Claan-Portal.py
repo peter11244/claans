@@ -3,6 +3,7 @@ import pathlib
 import streamlit as st
 
 from src.models.claan import Claan
+from src.utils.data.users import get_current_user
 from src.utils.data.scores import get_scores
 from src.utils.data.stocks import get_corporate_data
 from src.utils.database import Database
@@ -29,14 +30,6 @@ def login_page() -> None:
         st.write("Welcome to Claans! Please sign in to continue.")
         st.stop()
 
-    account = auth_data["account"]
-
-    name = account["name"]
-
-    st.write(f"Hello {name}!")
-    st.write("Protected content available")
-    st.write(auth_data)
-
     return auth_data
 
 
@@ -44,7 +37,19 @@ def init_page() -> None:
 
 
     auth_data = login_page()
+    account = auth_data["account"]
+    name = account["name"]
+    email = account["username"]
 
+    with Database.get_session as session:
+        if "current_user" not in st.session_state:
+            st.session_state["current_user"] = get_current_user(session, email)
+        
+        claan = st.session_state["current_user"]["claan"]
+
+    st.write(f"Hello {name}!")
+    st.write(f"Your Email: {email}")
+    st.write(f"Your Claan: {claan}")
     
 
     st.markdown(
