@@ -19,6 +19,7 @@ from src.utils.data.users import get_claan_users
 from src.utils.database import Database
 from src.utils.logger import LOGGER
 
+from menu import menu_with_redirect
 
 class ClaanPage:
     def __init__(self, claan: Claan) -> None:
@@ -29,6 +30,8 @@ class ClaanPage:
             page_icon=self.claan.get_icon(),
             layout="wide",
         )
+        
+        menu_with_redirect()
 
         st.markdown(
             """<style>

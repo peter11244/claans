@@ -298,6 +298,8 @@ def task_management() -> None:
 def init_page() -> None:
     st.set_page_config(page_title="Admin", layout="wide")
 
+    menu_with_redirect()
+
     if not check_password():
         st.stop()
 
@@ -320,5 +322,4 @@ def init_page() -> None:
 
 
 if __name__ == "__main__":
-    menu_with_redirect()
     init_page()

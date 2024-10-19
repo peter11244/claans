@@ -16,6 +16,8 @@ from menu import menu_with_redirect
 def init_page() -> None:
     st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
+    menu_with_redirect()
+
     st.markdown(
         """<style>
         .st-emotion-cache-15zws4i, .st-emotion-cache-1j7f08p {
@@ -138,7 +140,6 @@ Each Claan has been issues 50 shares initially, with 2 shares given to each Boar
 
 
 def main() -> None:
-    menu_with_redirect()
     init_page()
 
 
