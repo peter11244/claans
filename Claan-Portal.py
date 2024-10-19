@@ -27,8 +27,7 @@ else:
             # TODO: Ensure single user?
             st.session_state["current_user"] = get_current_user(session, email)
     
-    # This makes this not logout.
-    st.switch_page('pages/0_Home.py')
+
 
 
 
