@@ -16,7 +16,7 @@ def unauthenticated_menu():
 def menu():
     # Determine if a user is logged in or not, then show the correct
     # navigation menu
-    if "role" not in st.session_state or st.session_state.role is None:
+    if "current_user" not in st.session_state:
         unauthenticated_menu()
         return
     authenticated_menu()
