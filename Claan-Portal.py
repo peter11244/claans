@@ -45,7 +45,7 @@ def init_page() -> None:
         if "current_user" not in st.session_state:
             st.session_state["current_user"] = get_current_user(session, email)
         
-        claan = st.session_state["current_user"]["claan"]
+        claan = st.session_state["current_user"][0]["claan"]
 
     st.write(f"Hello {name}!")
     st.write(f"Your Email: {email}")
