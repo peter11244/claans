@@ -17,19 +17,7 @@ auth_data = Msal.initialize_ui(
 
 if not auth_data:
     st.session_state.pop("current_user")
-    st.write("Welcome to Claans! Please sign in to continue.")
-    st.stop()
-
-else:
-    # name = auth_data["account"]["name"]
-    email = auth_data["account"]["username"]
-    with Database.get_session() as session:
-        if "current_user" not in st.session_state:
-            st.session_state["current_user"] = get_current_user(session, email)
-    
-
-
-
-
+    st.switch_page("Claan-Portal.py")
 
 menu() # Render the dynamic menu!
+
