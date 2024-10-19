@@ -44,9 +44,10 @@ def init_page() -> None:
 
     login() 
 
-    st.write(f"Hello {st.session_state["current_user"].name}!")
-    st.write(f"Your Email: {st.session_state["current_user"].email}")
-    st.write(f"Your Claan: {st.session_state["current_user"].claan}")
+    st.write(st.session_state["current_user"])
+    # st.write(f"Hello {st.session_state["current_user"].name}!")
+    # st.write(f"Your Email: {st.session_state["current_user"].email}")
+    # st.write(f"Your Claan: {st.session_state["current_user"].claan}")
     
 
     st.markdown(
