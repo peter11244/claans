@@ -42,6 +42,13 @@ def login() -> None:
 def init_page() -> None:
     st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
+    
+    ###
+    ## USER AUTH
+    ###
+    
+    # TODO: This approach can lead to the sign out button disappearing...
+    # Would like a way to skip the sign in box if possible for a repeated session
     if "current_user" not in st.session_state:
         login() 
 
@@ -49,6 +56,26 @@ def init_page() -> None:
     st.write(f"Your Email: {st.session_state["current_user"].email}")
     st.write(f"Your Claan: {st.session_state["current_user"].claan}")
     
+
+    ###
+    ##  FILTERED NAV
+    ###
+
+    # TODO: Add an admin flag into the users table.
+
+    available_pages = [st.Page("Claan-Portal.py")]
+    # IF CLAAN
+    available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
+    # IF ADMIN
+    available_pages.append(st.Page("./pages/7_Admin.py"))
+
+    st.navigation(pages=available_pages, position="sidebar")
+
+
+
+    ###
+    ##  CLAANS HOME
+    ###
 
     st.markdown(
         """<style>
