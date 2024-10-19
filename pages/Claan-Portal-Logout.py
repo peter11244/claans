@@ -16,7 +16,7 @@ auth_data = Msal.initialize_ui(
     )
 
 if not auth_data:
-    st.session_state.pop("current_user")
+    st.session_state.pop("current_user", None)
     st.switch_page("Claan-Portal.py")
 
 menu() # Render the dynamic menu!

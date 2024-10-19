@@ -16,7 +16,7 @@ auth_data = Msal.initialize_ui(
     )
 
 if not auth_data:
-    st.session_state.pop("current_user")
+    st.session_state.pop("current_user", None)
     st.write("Welcome to Claans! Please sign in to continue.")
     st.stop()
 
