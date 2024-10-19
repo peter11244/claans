@@ -64,10 +64,16 @@ def init_page() -> None:
     # TODO: Add an admin flag into the users table.
 
     available_pages = [st.Page("Claan-Portal.py")]
-    # IF CLAAN
-    available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
-    # IF ADMIN
-    available_pages.append(st.Page("./pages/7_Admin.py"))
+    
+    #Hacky
+    match st.session_state["current_user"].claan:
+        case "Claan.THUNDER_WALKERS":
+            available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
+        case "Claan.IRON_STALKERS":
+            available_pages.append(st.Page("./pages/6_Iron_Stalkers.py"))
+
+    if st.session_state["current_user"].email == "jake.ratcliffe@advancinganalytics.co.uk":
+        available_pages.append(st.Page("./pages/7_Admin.py"))
 
     st.navigation(pages=available_pages, position="sidebar")
 
