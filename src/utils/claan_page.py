@@ -156,75 +156,68 @@ class ClaanPage:
         # =-- SUBMISSION --= #
 
         with st.container(border=True):
-            user = st.selectbox(
-                label="Your name",
-                key="task_user",
-                options=st.session_state[f"users_{self.claan.name}"],
-                format_func=lambda user: user.name,
-                index=None,
-            )
+        
+            st.write(f"You are {st.session_state["current_user"].name}")
+            col_task, col_portfolio = st.columns(2)
+            with col_task:
+                with st.form(key="form_submit_task"):
+                    st.header("Tasks")
 
-            if user:
-                col_task, col_portfolio = st.columns(2)
-                with col_task:
-                    with st.form(key="form_submit_task"):
-                        st.header("Tasks")
+                    st.radio(
+                        label="Tasks",
+                        options=st.session_state["active_tasks"],
+                        format_func=lambda task: f"${task.reward.value}: {task.description}",
+                        key="task_selection",
+                    )
 
-                        st.radio(
-                            label="Tasks",
-                            options=st.session_state["active_tasks"],
-                            format_func=lambda task: f"${task.reward.value}: {task.description}",
-                            key="task_selection",
-                        )
+                    st.form_submit_button(
+                        label="Submit",
+                        on_click=submit_record,
+                        kwargs={
+                            "_session": Database.get_session(),
+                        },
+                    )
 
-                        st.form_submit_button(
-                            label="Submit",
-                            on_click=submit_record,
-                            kwargs={
-                                "_session": Database.get_session(),
-                            },
-                        )
-
-                with col_portfolio:
-                    st.session_state["portfolio"] = portfolio = st.session_state[
-                        f"portfolios_{self.claan.name}"
-                    ][user.id]
-                    with st.form(key="form_activities"):
-                        st.header("Wallet")
-                        st.metric(
-                            label="Wallet Cash",
-                            value=f"${round(portfolio.cash or 0.0, 2)}",
-                        )
-                        st.metric(
-                            label="Current Vote",
-                            value=portfolio.board_vote.name.title(),
-                        )
-                        st.radio(
-                            label="Board Vote",
-                            key="portfolio_vote",
-                            options=list(BoardVote),
-                            format_func=lambda vote_type: vote_type.name.title(),
-                            index=list(BoardVote).index(portfolio.board_vote),
-                        )
-                        st.form_submit_button(
-                            label="Update Vote",
-                            on_click=update_vote,
-                            kwargs={
-                                "_session": Database.get_session(),
-                                "_portfolio": portfolio,
-                                "_claan": self.claan,
-                            },
-                        )
-                        df_shares = pd.DataFrame.from_dict(
-                            data=st.session_state[f"shares_{self.claan.name}"][
-                                portfolio.id
-                            ],
-                            orient="index",
-                        )
-                        df_shares.index = df_shares.index.map(
-                            lambda claan: claan.name.title().replace("_", " ")
-                        )
-                        st.dataframe(data=df_shares, use_container_width=True)
+            with col_portfolio:
+                st.session_state["portfolio"] = portfolio = st.session_state[
+                    f"portfolios_{self.claan.name}"
+                ][st.session_state["current_user"].id]
+                with st.form(key="form_activities"):
+                    st.header("Wallet")
+                    st.metric(
+                        label="Wallet Cash",
+                        value=f"${round(portfolio.cash or 0.0, 2)}",
+                    )
+                    st.metric(
+                        label="Current Vote",
+                        value=portfolio.board_vote.name.title(),
+                    )
+                    st.radio(
+                        label="Board Vote",
+                        key="portfolio_vote",
+                        options=list(BoardVote),
+                        format_func=lambda vote_type: vote_type.name.title(),
+                        index=list(BoardVote).index(portfolio.board_vote),
+                    )
+                    st.form_submit_button(
+                        label="Update Vote",
+                        on_click=update_vote,
+                        kwargs={
+                            "_session": Database.get_session(),
+                            "_portfolio": portfolio,
+                            "_claan": self.claan,
+                        },
+                    )
+                    df_shares = pd.DataFrame.from_dict(
+                        data=st.session_state[f"shares_{self.claan.name}"][
+                            portfolio.id
+                        ],
+                        orient="index",
+                    )
+                    df_shares.index = df_shares.index.map(
+                        lambda claan: claan.name.title().replace("_", " ")
+                    )
+                    st.dataframe(data=df_shares, use_container_width=True)
 
         with st.expander("Record History"):
             if st.button(
