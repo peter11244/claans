@@ -8,3 +8,4 @@ faker
 pytest
 loguru
 email-validator
+streamlit-msal
