@@ -66,7 +66,7 @@ def init_page() -> None:
     available_pages = [st.Page("Claan-Portal.py")]
     
     #Hacky
-    match st.session_state["current_user"].claan:
+    match st.session_state["current_user"].claan.name:
         case "Thunder Walkers":
             available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
         case "Iron Stalkers":
