@@ -12,6 +12,10 @@ from src.utils.logger import LOGGER
 from streamlit_msal import Msal
 
 
+
+st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
+
+
 def login() -> None:
     
 
@@ -39,7 +43,6 @@ def login() -> None:
                 st.session_state["current_user"] = get_current_user(session, email)[0]
 
 
-st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
 
 ###
@@ -60,7 +63,7 @@ st.write(f"Your Claan: {st.session_state["current_user"].claan.value}")
 ##  FILTERED NAV
 ###
 
-available_pages = [st.Page("Claan-Portal.py")]
+available_pages = [st.Page("./pages/0_Home.py")]
 
 #Hacky
 match st.session_state["current_user"].claan.value:
