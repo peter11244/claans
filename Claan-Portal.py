@@ -67,9 +67,9 @@ def init_page() -> None:
     
     #Hacky
     match st.session_state["current_user"].claan:
-        case "Claan.THUNDER_WALKERS":
+        case "Thunder Walkers":
             available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
-        case "Claan.IRON_STALKERS":
+        case "Iron Stalkers":
             available_pages.append(st.Page("./pages/6_Iron_Stalkers.py"))
 
     if st.session_state["current_user"].email == "peter.sach@advancinganalytics.co.uk":
