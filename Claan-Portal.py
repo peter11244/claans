@@ -26,7 +26,7 @@ def login_page() -> None:
     )
 
     if not auth_data:
-        st.write("Authenticate to access protected content")
+        st.write("Welcome to Claans! Please sign in to continue.")
         st.stop()
 
     account = auth_data["account"]
