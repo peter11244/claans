@@ -35,6 +35,7 @@ def login_page() -> None:
 
     st.write(f"Hello {name}!")
     st.write("Protected content available")
+    st.write(auth_data)
 
     return auth_data
 
