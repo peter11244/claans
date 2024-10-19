@@ -42,7 +42,8 @@ def login() -> None:
 def init_page() -> None:
     st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
-    login() 
+    if not st.session_state["current_user"]:
+        login() 
 
     st.write(f"Hello {st.session_state["current_user"].name}!")
     st.write(f"Your Email: {st.session_state["current_user"].email}")
