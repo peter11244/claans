@@ -158,6 +158,8 @@ class ClaanPage:
         with st.container(border=True):
         
             st.write(f"You are {st.session_state["current_user"].name}")
+            st.session_state["task_user"] = st.session_state["current_user"].id
+
             col_task, col_portfolio = st.columns(2)
             with col_task:
                 with st.form(key="form_submit_task"):
