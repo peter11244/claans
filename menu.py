@@ -4,7 +4,7 @@ import streamlit as st
 def authenticated_menu():
     # Show a navigation menu for authenticated users
     st.sidebar.page_link("pages/0_Home.py", label="Claans Home")
-    if st.session_state.role in ["admin", "super-admin"]:
+    if st.session_state["current_user"].email == "peter.sach@advancinganalytics.co.uk":
         st.sidebar.page_link("pages/7_Admin.py", label="Manage users")
 
 
