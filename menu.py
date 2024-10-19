@@ -20,7 +20,7 @@ def authenticated_menu():
             st.sidebar.page_link("pages/6_Iron_Stalkers.py", label="Iron Stalkers")
     if st.session_state["current_user"].email == "peter.sach@advancinganalytics.co.uk":
         st.sidebar.page_link("pages/7_Admin.py", label="Manage users")
-    st.sidebar.page_link("Claan-Portal.py", label="Log Out")
+    st.sidebar.page_link("Claan-Portal-Logout.py", label="Log Out")
 
 def unauthenticated_menu():
     # Show a navigation menu for unauthenticated users

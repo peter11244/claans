@@ -26,7 +26,6 @@ else:
     with Database.get_session() as session:
         if "current_user" not in st.session_state:
             st.session_state["current_user"] = get_current_user(session, email)
-    st.switch_page("pages/0_Home.py")
     
 
 
