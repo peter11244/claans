@@ -67,8 +67,16 @@ def init_page() -> None:
     
     #Hacky
     match st.session_state["current_user"].claan.value:
+        case "Earth Striders":
+            available_pages.append(st.Page("./pages/1_Earth_Striders.py"))
+        case "Fire Dancers":
+            available_pages.append(st.Page("./pages/2_Fire_Dancers.py"))
         case "Thunder Walkers":
             available_pages.append(st.Page("./pages/3_Thunder_Walkers.py"))
+        case "Wave Riders":
+            available_pages.append(st.Page("./pages/4_Wave_Riders.py"))
+        case "Beast Runner":
+            available_pages.append(st.Page("./pages/5_Beast_Runners.py"))
         case "Iron Stalkers":
             available_pages.append(st.Page("./pages/6_Iron_Stalkers.py"))
 
