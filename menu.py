@@ -18,6 +18,7 @@ def authenticated_menu():
             st.sidebar.page_link("pages/5_Beast_Runners.py", label="Beast Runners")
         case "Iron Stalkers":
             st.sidebar.page_link("pages/6_Iron_Stalkers.py", label="Iron Stalkers")
+    # Add admin flag for users
     if st.session_state["current_user"].email == "peter.sach@advancinganalytics.co.uk":
         st.sidebar.page_link("pages/7_Admin.py", label="Manage users")
     st.sidebar.page_link("pages/Claan-Portal-Logout.py", label="Log Out")
