@@ -61,8 +61,6 @@ def init_page() -> None:
     ##  FILTERED NAV
     ###
 
-    # TODO: Add an admin flag into the users table.
-
     available_pages = [st.Page("Claan-Portal.py")]
     
     #Hacky
@@ -80,11 +78,12 @@ def init_page() -> None:
         case "Iron Stalkers":
             available_pages.append(st.Page("./pages/6_Iron_Stalkers.py"))
 
+    # TODO: Add an admin flag into the users table.
     if st.session_state["current_user"].email == "peter.sach@advancinganalytics.co.uk":
         available_pages.append(st.Page("./pages/7_Admin.py"))
 
-    st.navigation(pages=available_pages, position="sidebar")
-
+    pg = st.navigation(pages=available_pages, position="sidebar")
+    pg.run()
 
 
     ###
