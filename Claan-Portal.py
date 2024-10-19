@@ -38,17 +38,15 @@ def login() -> None:
                 # TODO: Ensure single user?
                 st.session_state["current_user"] = get_current_user(session, email)[0]
 
-    return auth_data
-
 
 def init_page() -> None:
     st.set_page_config(page_title="Claans Corporate Claash", page_icon=":dragon:")
 
-    auth_data = login() 
+    login() 
 
-    st.write(f"Hello {st.session_state["current_user"]["name"]}!")
-    st.write(f"Your Email: {st.session_state["current_user"]["email"]}")
-    st.write(f"Your Claan: {st.session_state["current_user"]["claan"]}")
+    st.write(f"Hello {st.session_state["current_user"].name}!")
+    st.write(f"Your Email: {st.session_state["current_user"].email}")
+    st.write(f"Your Claan: {st.session_state["current_user"].claan}")
     
 
     st.markdown(
