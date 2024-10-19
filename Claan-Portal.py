@@ -54,7 +54,7 @@ def init_page() -> None:
 
     st.write(f"Hello {st.session_state["current_user"].name}!")
     st.write(f"Your Email: {st.session_state["current_user"].email}")
-    st.write(f"Your Claan: {st.session_state["current_user"].claan}")
+    st.write(f"Your Claan: {st.session_state["current_user"].claan.name}")
     
 
     ###
