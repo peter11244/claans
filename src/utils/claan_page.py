@@ -156,8 +156,7 @@ class ClaanPage:
         # =-- SUBMISSION --= #
 
         with st.container(border=True):
-        
-            st.write(f"You are {st.session_state["current_user"].name}")
+            # Should change the task_user to use current_user
             st.session_state["task_user"] = st.session_state["current_user"]
 
             col_task, col_portfolio = st.columns(2)
